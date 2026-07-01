@@ -1,0 +1,156 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="第 1 页" id="YBiM0snQ8mMnm-MJHDv2">
+    <mxGraphModel dx="1548" dy="915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fillColor=none;strokeColor=none;" value="TC · ApiTests API 集成测试框架架构图（master_CM_MultiOrg 分支 · 跑店多组织场景）" vertex="1">
+          <mxGeometry height="40" width="1480" x="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;fontSize=11;dashed=0;" value="&lt;b&gt;appsettings.api-test.local.json&lt;/b&gt;&lt;br&gt;&lt;br&gt;TargetUrl · OrgId · UserId&lt;br&gt;Current/Other 营销组织 ID&lt;br&gt;OpenAPI AppKey / Secret / 私钥&lt;br&gt;SqlServer 连接 · 允许的编码前缀" vertex="1">
+          <mxGeometry height="90" width="440" x="540" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="commonC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=top;fontSize=13;fontStyle=1;verticalAlign=top;spacingTop=8;" value="Ufida.T.ApiTests.Common · 公共基础框架程序集（可被各业务测试程序集复用）" vertex="1">
+          <mxGeometry height="230" width="1480" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="inf" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;Infrastructure&lt;/b&gt;&lt;br&gt;配置基础设施&lt;br&gt;&lt;br&gt;· ApiTestConfiguration&lt;br&gt;&amp;nbsp;&amp;nbsp;定位/加载本地配置" vertex="1">
+          <mxGeometry height="170" width="276" x="40" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="opt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;Options&lt;/b&gt;&lt;br&gt;配置选项模型&lt;br&gt;&lt;br&gt;· ApiTestOptions&lt;br&gt;· GetMissingRequiredValues&lt;br&gt;&amp;nbsp;&amp;nbsp;必填校验 → Ignore" vertex="1">
+          <mxGeometry height="170" width="276" x="330" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="rest" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;Rest&lt;/b&gt;&lt;br&gt;双协议 HTTP 客户端&lt;br&gt;&lt;br&gt;· TplusRestApiClient (T+ REST)&lt;br&gt;· TplusOpenApiV2Client (OpenAPI v2)&lt;br&gt;· TplusRestApiResponse 响应封装" vertex="1">
+          <mxGeometry height="170" width="290" x="620" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="fix" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;Fixtures&lt;/b&gt;&lt;br&gt;测试夹具基础设施&lt;br&gt;&lt;br&gt;· ApiFixtureContext 上下文&lt;br&gt;· FixtureSafetyGuard 安全守卫&lt;br&gt;· 基础档案 / 销售数据" vertex="1">
+          <mxGeometry height="170" width="276" x="925" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="rpt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;Reports&lt;/b&gt;&lt;br&gt;报表测试支持&lt;br&gt;&lt;br&gt;· 报表参数构造&lt;br&gt;· 行/列取值与断言" vertex="1">
+          <mxGeometry height="170" width="264" x="1216" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="cmC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=8;" value="Ufida.T.CM.ApiTests · CM 跑店多组织（RunShop MultiOrg）业务测试程序集" vertex="1">
+          <mxGeometry height="470" width="1480" x="20" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="supC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#82b366;align=center;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;dashed=1;" value="Common/ 测试支撑工具" vertex="1">
+          <mxGeometry height="405" width="350" x="40" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="methods" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;RunShopMultiOrgApiMethods&lt;/b&gt;&lt;br&gt;&lt;br&gt;API 方法名常量表&lt;br&gt;统一管理被测 Service 方法全名&lt;br&gt;（Partner / Person / RoutePlan&lt;br&gt;VisitPlan / VisitRecord / Report…）" vertex="1">
+          <mxGeometry height="150" width="320" x="55" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="sup" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;RunShopMultiOrgApiTestSupport&lt;/b&gt;&lt;br&gt;&lt;br&gt;· LoadOptionsOrIgnore 加载校验&lt;br&gt;· AssertApiSuccess / 报表断言&lt;br&gt;· 日期范围 / JSON 取值工具&lt;br&gt;· 已知缺陷容错&lt;br&gt;&amp;nbsp;&amp;nbsp;(SQL4104 / 临时表失败)" vertex="1">
+          <mxGeometry height="170" width="320" x="55" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="fixC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;" value="Fixtures/ 测试夹具核心（partial class 分职责拆分）" vertex="1">
+          <mxGeometry height="405" width="560" x="410" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="fixtureMain" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;RunShopFixture&lt;/b&gt;&lt;br&gt;&lt;br&gt;· EnsureAsync 声明式入口&lt;br&gt;· IAsyncDisposable 自动清理&lt;br&gt;· 按依赖位掩码编排数据准备&lt;br&gt;· 持有 RestClient / OpenApiV2Client" vertex="1">
+          <mxGeometry height="150" width="255" x="425" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="dep" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;Dependencies [Flags]&lt;/b&gt;&lt;br&gt;&lt;br&gt;位运算组合·按需装配&lt;br&gt;&lt;br&gt;None → BaseData&lt;br&gt;→ VisitData&lt;br&gt;→ ReportData&lt;br&gt;(含 OtherOrg 多组织位)" vertex="1">
+          <mxGeometry height="150" width="260" x="695" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="fixtureParts" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;partial 分文件扩展（单一职责）&lt;/b&gt;&lt;br&gt;&lt;br&gt;.BaseData · .RoutePlan · .VisitPlan · .VisitRecord&lt;br&gt;.Reports · .Helpers · .Requirements&lt;br&gt;+ RunShopFixtureCodes（唯一编码生成）&lt;br&gt;+ RunShopFixtureData（多组织数据载体）&lt;br&gt;+ CmVisitPersonFixtureService（拜访人员服务）" vertex="1">
+          <mxGeometry height="170" width="530" x="425" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="testC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#82b366;align=center;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;dashed=1;" value="TestCases/ 测试用例（NUnit Category 分层）" vertex="1">
+          <mxGeometry height="405" width="490" x="990" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="smoke" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;Smoke 冒烟&lt;/b&gt;&lt;br&gt;&lt;br&gt;ApiSmokeTests&lt;br&gt;ApiPayloadTests&lt;br&gt;&lt;br&gt;无需 Fixture&lt;br&gt;验证 API 可达性" vertex="1">
+          <mxGeometry height="150" width="225" x="1005" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="biz" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;业务域测试&lt;/b&gt;&lt;br&gt;&lt;br&gt;· CustomerMap 客户映射&lt;br&gt;· RoutePlan 路线&lt;br&gt;· VisitPlan 拜访计划&lt;br&gt;· VisitRecord 拜访记录&lt;br&gt;· VisitTracking 行踪轨迹" vertex="1">
+          <mxGeometry height="150" width="225" x="1245" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="reports" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;Reports 报表&lt;/b&gt;&lt;br&gt;&lt;br&gt;· Mobile 移动端报表&lt;br&gt;&amp;nbsp;&amp;nbsp;(IMBReportService)&lt;br&gt;· PC OpenAPI v2 报表&lt;br&gt;&amp;nbsp;&amp;nbsp;(GetReportData)&lt;br&gt;&lt;br&gt;含多组织 MarketingOrgan 分组" vertex="1">
+          <mxGeometry height="170" width="225" x="1005" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="diag" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;" value="&lt;b&gt;FixtureDiagnostics&lt;/b&gt;&lt;br&gt;&lt;br&gt;· Preflight 预检&lt;br&gt;&amp;nbsp;&amp;nbsp;配置/Token/SQL 可用性&lt;br&gt;· Dependency 依赖&lt;br&gt;&amp;nbsp;&amp;nbsp;夹具装配链路验证&lt;br&gt;&lt;br&gt;排查环境与夹具问题" vertex="1">
+          <mxGeometry height="170" width="225" x="1245" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="targetC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=8;" value="目标系统（被测 T+ 运行时）" vertex="1">
+          <mxGeometry height="150" width="1480" x="20" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;T+ REST API Service&lt;/b&gt;&lt;br&gt;&lt;br&gt;chanjet.CM.* / Ufida.T.CM.Interface.*&lt;br&gt;跑店·路线·拜访计划·拜访记录·客户映射" vertex="1">
+          <mxGeometry height="85" width="400" x="80" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="oapi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;T+ OpenAPI v2&lt;/b&gt;&lt;br&gt;&lt;br&gt;reportQuery / GetReportData&lt;br&gt;PC 报表数据查询（分页/方案复用）" vertex="1">
+          <mxGeometry height="85" width="400" x="560" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;align=center;verticalAlign=middle;fontSize=11;" value="&lt;b&gt;SQL Server（被测库）&lt;/b&gt;&lt;br&gt;&lt;br&gt;· Fixture 数据写入 / 清理&lt;br&gt;· 参数化查询校验（受前缀守卫保护）" vertex="1">
+          <mxGeometry height="85" width="400" x="1040" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="cfg" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontSize=10;" target="inf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;fontStyle=1;verticalAlign=bottom;" value="引用 / 继承">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="405" />
+              <mxPoint x="760" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="inf" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=1.5;dashed=1;" target="opt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="opt" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=1.5;dashed=1;" target="fix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="methods" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=1.5;dashed=1;" target="sup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="dep" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=1.5;fontSize=10;" target="fixtureMain" value="驱动装配">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="fixtureMain" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=1.5;fontSize=10;" target="fixtureParts" value="partial 扩展">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="fixC" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontSize=10;fontStyle=1;" target="biz" value="夹具供给数据">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="sup" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=1.5;fontSize=10;dashed=1;" target="reports" value="方法名/断言">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="rest" style="endArrow=classic;html=1;strokeColor=#d79b00;strokeWidth=2;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="svc" value="T+ REST 调用">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="rest" style="endArrow=classic;html=1;strokeColor=#d79b00;strokeWidth=2;fontSize=10;fontStyle=1;" target="oapi" value="OpenAPI v2 调用">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="fix" style="endArrow=classic;html=1;strokeColor=#d79b00;strokeWidth=2;fontSize=10;fontStyle=1;" target="db" value="写入/清理">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legendT" parent="1" style="text;html=1;align=left;fontSize=11;fontStyle=1;fillColor=none;strokeColor=none;" value="图例" vertex="1">
+          <mxGeometry height="20" width="60" x="20" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="14" width="18" x="70" y="1122" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Common 框架" vertex="1">
+          <mxGeometry height="18" width="90" x="92" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="14" width="18" x="190" y="1122" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="CM 业务测试" vertex="1">
+          <mxGeometry height="18" width="90" x="212" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="14" width="18" x="310" y="1122" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Fixture 核心" vertex="1">
+          <mxGeometry height="18" width="90" x="332" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
+          <mxGeometry height="14" width="18" x="430" y="1122" as="geometry" />
+        </mxCell>
+        <mxCell id="lg4t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="目标系统（被测）" vertex="1">
+          <mxGeometry height="18" width="110" x="452" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg5" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="── 实线 = 调用/数据流    ┄┄ 虚线 = 引用/依赖" vertex="1">
+          <mxGeometry height="18" width="320" x="580" y="1120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
