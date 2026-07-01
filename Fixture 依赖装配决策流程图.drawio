@@ -1,0 +1,162 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="第 1 页" id="zncpkV2Qp-ujFVguNJMK">
+    <mxGraphModel dx="1258" dy="744" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=16;fontStyle=1;fillColor=none;strokeColor=none;" value="图 B · Fixture 依赖装配决策流程图（[Flags] 位掩码条件化驱动）" vertex="1">
+          <mxGeometry height="36" width="1460" x="20" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" value="起点：测试类声明依赖组合" vertex="1">
+          <mxGeometry height="50" width="320" x="590" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="examples" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;" value="举例：&lt;br&gt;• ApiSmokeTests → 不调用 EnsureAsync&lt;br&gt;• VisitPlanApiTests [Smoke] → 不调用&lt;br&gt;• PcReportOpenApiV2Tests → ReportData&lt;br&gt;• CustomerMapFixtureTests → BaseData" vertex="1">
+          <mxGeometry height="100" width="280" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="noneChk" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="dependencies == None ?" vertex="1">
+          <mxGeometry height="80" width="200" x="650" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="noneOut" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="直接返回空 Fixture&lt;br&gt;（不认证、不准备数据）" vertex="1">
+          <mxGeometry height="50" width="220" x="640" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="guard" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=6;" value="三层安全闸（任一失败 → Assert.Ignore 跳过）" vertex="1">
+          <mxGeometry height="110" width="560" x="470" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="g1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=10;" value="① RequireFixtureWriteEnabled&lt;br&gt;EnableFixtureWrite=true" vertex="1">
+          <mxGeometry height="60" width="165" x="485" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="g2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=10;" value="② RequireMarketingOrgIds&lt;br&gt;Current/Other 组织 ID" vertex="1">
+          <mxGeometry height="60" width="165" x="665" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="g3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=10;" value="③ AssertConfiguredPrefix&lt;br&gt;编码前缀=APITEST_" vertex="1">
+          <mxGeometry height="60" width="170" x="845" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="RestClient.AuthenticateAsync()&lt;br&gt;获取 T+ Token" vertex="1">
+          <mxGeometry height="50" width="240" x="630" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="cleanupBlk" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="CleanupSharedBlockingDataAsync()&lt;br&gt;清理阻碍测试的旧数据" vertex="1">
+          <mxGeometry height="50" width="280" x="610" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="chainT" parent="1" style="text;html=1;align=center;fontSize=12;fontStyle=1;fillColor=none;strokeColor=none;fontColor=#666666;" value="▼ 依赖链条件化判定（顺序执行，命中则准备+注册清理，未命中则跳过）" vertex="1">
+          <mxGeometry height="24" width="1300" x="100" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresVisitPersonData?" vertex="1">
+          <mxGeometry height="70" width="150" x="120" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresCustomerData?" vertex="1">
+          <mxGeometry height="70" width="150" x="300" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresVisitDataCleanup?&lt;br&gt;(Current/Other)" vertex="1">
+          <mxGeometry height="70" width="150" x="480" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresInventoryData?" vertex="1">
+          <mxGeometry height="70" width="150" x="660" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresReportSourceData?" vertex="1">
+          <mxGeometry height="70" width="150" x="840" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresRouteData?&lt;br&gt;(Current/Other)" vertex="1">
+          <mxGeometry height="70" width="150" x="1020" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="RequiresVisitPlanData?&lt;br&gt;(Current/Other)" vertex="1">
+          <mxGeometry height="70" width="150" x="1200" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ CmVisitPersonFixtureService&lt;br&gt;.EnsureCurrentUserVisitPerson" vertex="1">
+          <mxGeometry height="44" width="160" x="110" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ EnsureCustomerData&lt;br&gt;(双组织客户对)" vertex="1">
+          <mxGeometry height="44" width="160" x="290" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ CleanupVisitData&lt;br&gt;(Current + Other)" vertex="1">
+          <mxGeometry height="44" width="160" x="470" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ EnsureInventoryData" vertex="1">
+          <mxGeometry height="44" width="160" x="650" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ EnsureReportSourceData&lt;br&gt;+ Cleanup.Add(报表源清理)" vertex="1">
+          <mxGeometry height="44" width="160" x="830" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ EnsureRouteData&lt;br&gt;(Current + Other)" vertex="1">
+          <mxGeometry height="44" width="160" x="1010" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;" value="✓ EnsureVisitPlanData&lt;br&gt;+ Cleanup.Add(删除计划)" vertex="1">
+          <mxGeometry height="44" width="160" x="1190" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="merge" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" value="CreateFixtureData() 聚合所有已准备数据&lt;br&gt;→ RunShopFixtureData (CurrentOrg + OtherOrg + Report)" vertex="1">
+          <mxGeometry height="50" width="540" x="480" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" value="终点：返回完整 Fixture&lt;br&gt;测试方法可用 fixture.Data / fixture.OpenApiV2Client" vertex="1">
+          <mxGeometry height="50" width="500" x="500" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="cleanupBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=10;fontStyle=1;" value="♻️ Cleanup 栈（LIFO 逆序）&lt;br&gt;&lt;br&gt;DisposeAsync() 时执行:&lt;br&gt;拜访记录 → 拜访计划 → 报表源 ...&lt;br&gt;每项回调删除对应测试数据" vertex="1">
+          <mxGeometry height="120" width="240" x="1080" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="eb1" edge="1" parent="1" source="start" style="endArrow=classic;html=1;" target="noneChk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb2" edge="1" parent="1" source="noneChk" style="endArrow=classic;html=1;fontSize=10;" target="noneOut" value="是">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb3" edge="1" parent="1" source="noneChk" style="endArrow=classic;html=1;fontSize=10;" target="guard" value="否">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eb4" edge="1" parent="1" source="guard" style="endArrow=classic;html=1;" target="auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb5" edge="1" parent="1" source="auth" style="endArrow=classic;html=1;" target="cleanupBlk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb6" edge="1" parent="1" source="cleanupBlk" style="endArrow=classic;html=1;dashed=1;" target="d1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="620" />
+              <mxPoint x="195" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eb7" edge="1" parent="1" source="d1" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a1" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb8" edge="1" parent="1" source="d2" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a2" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb9" edge="1" parent="1" source="d3" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a3" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb10" edge="1" parent="1" source="d4" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a4" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb11" edge="1" parent="1" source="d5" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a5" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb12" edge="1" parent="1" source="d6" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a6" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb13" edge="1" parent="1" source="d7" style="endArrow=classic;html=1;fontSize=8;fontColor=#82b366;" target="a7" value="命中">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb14" edge="1" parent="1" source="a1" style="endArrow=classic;html=1;dashed=1;" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb15" edge="1" parent="1" source="a7" style="endArrow=classic;html=1;dashed=1;" target="merge">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270" y="820" />
+              <mxPoint x="750" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eb16" edge="1" parent="1" source="merge" style="endArrow=classic;html=1;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb17" edge="1" parent="1" source="merge" style="endArrow=classic;html=1;dashed=1;strokeColor=#d79b00;" target="cleanupBox">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
