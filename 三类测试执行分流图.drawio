@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="第 1 页" id="pBv5Layk0z1SvCBe0Srk">
+    <mxGraphModel dx="1341" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=16;fontStyle=1;fillColor=none;strokeColor=none;" value="图 C · 三类测试执行分流图（NUnit Category 驱动不同执行路径）" vertex="1">
+          <mxGeometry height="36" width="1460" x="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nunit" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" value="NUnit 测试运行器&lt;br&gt;（dotnet test / Test Explorer）" vertex="1">
+          <mxGeometry height="50" width="320" x="590" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dispatch" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="按 [Category] + 是否调用 RunShopFixture.EnsureAsync 分流" vertex="1">
+          <mxGeometry height="70" width="480" x="510" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=6;" value="路径 ①  Smoke 冒烟测试（轻量）" vertex="1">
+          <mxGeometry height="500" width="440" x="20" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeEx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" value="代表类:&lt;br&gt;• ApiSmokeTests&lt;br&gt;• ApiPayloadTests&lt;br&gt;• VisitPlanApiTests [Smoke]&lt;br&gt;• CustomerMapApiTests [Smoke]" vertex="1">
+          <mxGeometry height="90" width="410" x="35" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeS1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="① LoadOptionsOrIgnore()&lt;br&gt;加载配置 + 必填校验&lt;br&gt;缺项 → Assert.Ignore" vertex="1">
+          <mxGeometry height="60" width="410" x="35" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeS2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="② new TplusRestApiClient(options)&lt;br&gt;每个测试方法独立创建客户端" vertex="1">
+          <mxGeometry height="50" width="410" x="35" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeS3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="③ client.CallAsync(方法名, 参数)&lt;br&gt;直接 HTTP 调用 T+ REST" vertex="1">
+          <mxGeometry height="50" width="410" x="35" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeS4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="④ AssertApiSuccess / AssertJsonKind&lt;br&gt;验证可达性 + 响应结构" vertex="1">
+          <mxGeometry height="50" width="410" x="35" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="smokeOut" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" value="✓ 无需 Fixture · 无需写库 · 速度最快" vertex="1">
+          <mxGeometry height="40" width="410" x="35" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="fixC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=6;" value="路径 ②  FixtureRequired 业务/报表测试（重量级）" vertex="1">
+          <mxGeometry height="500" width="560" x="490" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="fixEx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;" value="代表类:&lt;br&gt;• PcReportOpenApiV2Tests [FixtureRequired][Slow]&lt;br&gt;• MobileReportApiTests · *FixtureApiTests&lt;br&gt;• RunShopBaseDataApiSmokeTests" vertex="1">
+          <mxGeometry height="90" width="530" x="505" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="fixS1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" value="① [OneTimeSetUp] RunShopFixture.EnsureAsync(依赖组合)&lt;br&gt;完整执行图 B 的装配决策流程" vertex="1">
+          <mxGeometry height="50" width="530" x="505" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="fixS2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" value="② 双组织数据准备（按位掩码）&lt;br&gt;客户 · 存货 · 路线 · 拜访计划/记录 · 报表源" vertex="1">
+          <mxGeometry height="50" width="530" x="505" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="fixS3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" value="③ 复用 fixture.OpenApiV2Client / RestClient&lt;br&gt;类内所有测试方法共享同一 Fixture" vertex="1">
+          <mxGeometry height="50" width="530" x="505" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="fixS4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" value="④ 业务断言 + 数据回归校验&lt;br&gt;如: 报表行含 fixture 数据 · 多组织分组验证" vertex="1">
+          <mxGeometry height="50" width="530" x="505" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="fixS5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="⑤ [OneTimeTearDown] DisposeAsync&lt;br&gt;Cleanup 栈 LIFO 逆序删除所有测试数据" vertex="1">
+          <mxGeometry height="50" width="530" x="505" y="665" as="geometry" />
+        </mxCell>
+        <mxCell id="fixOut" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" value="✓ 数据完备 · 验证业务正确性 · 用后即清理" vertex="1">
+          <mxGeometry height="30" width="530" x="505" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="diagC" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=6;" value="路径 ③  Diagnostics 诊断测试（排查）" vertex="1">
+          <mxGeometry height="500" width="400" x="1080" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="diagEx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" value="代表类:&lt;br&gt;• RunShopFixturePreflightTests [FixtureRequired]&lt;br&gt;• RunShopFixtureDependencyTests" vertex="1">
+          <mxGeometry height="80" width="370" x="1095" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="diagSubA" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=4;" value="Preflight 预检（连真实环境）" vertex="1">
+          <mxGeometry height="165" width="370" x="1095" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="pf1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=9;align=left;spacingLeft=8;" value="• 配置文件存在 + 开关正确&lt;br&gt;• RestToken 能否创建&lt;br&gt;• Fixture 能声明 BaseData&lt;br&gt;• SQL 参数化命令可执行" vertex="1">
+          <mxGeometry height="120" width="350" x="1105" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="diagSubB" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=4;" value="Dependency 依赖（纯逻辑·不连服务）" vertex="1">
+          <mxGeometry height="120" width="370" x="1095" y="575" as="geometry" />
+        </mxCell>
+        <mxCell id="dp1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;spacingLeft=8;" value="• 验证位掩码组合正确性&lt;br&gt;&amp;nbsp;&amp;nbsp;(ReportData 含全部子依赖)&lt;br&gt;• 验证数据载体绑定的组织 ID" vertex="1">
+          <mxGeometry height="80" width="350" x="1105" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="diagOut" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;" value="✓ 定位环境/配置/框架自身问题" vertex="1">
+          <mxGeometry height="30" width="370" x="1095" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="shared" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;fontSize=10;align=center;verticalAlign=middle;" value="共享底座（所有路径复用）&lt;br&gt;&lt;br&gt;RunShopMultiOrgApiMethods（方法名常量） &amp;nbsp;·&amp;nbsp; RunShopMultiOrgApiTestSupport（断言工具 / 已知缺陷容错） &amp;nbsp;·&amp;nbsp; ApiTestConfiguration（配置加载） &amp;nbsp;·&amp;nbsp; Common 程序集（Rest 客户端 / Fixtures 基础设施）" vertex="1">
+          <mxGeometry height="60" width="1460" x="20" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="cmpT" parent="1" style="text;html=1;align=left;fontSize=12;fontStyle=1;fillColor=none;strokeColor=none;" value="执行特征对比" vertex="1">
+          <mxGeometry height="24" width="200" x="20" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" value="&lt;table style=&#39;font-size:10px;border-collapse:collapse;&#39;&gt;&lt;tr style=&#39;background:#e1d5e7;&#39;&gt;&lt;th style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;维度&lt;/th&gt;&lt;th style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;① Smoke&lt;/th&gt;&lt;th style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;② FixtureRequired&lt;/th&gt;&lt;th style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;③ Diagnostics&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;是否写库&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;✗&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;background:#d5e8d4;&#39;&gt;✓ + 自动清理&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;仅预检读&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;数据完备性&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;依赖现网数据&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;background:#d5e8d4;&#39;&gt;Fixture 自建&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;验证重点&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;API 可达性&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;业务正确性&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;环境/框架健康&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;&#39;&gt;执行速度&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;background:#d5e8d4;&#39;&gt;快&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;慢&lt;/td&gt;&lt;td style=&#39;border:1px solid #999;padding:3px 8px;text-align:center;&#39;&gt;中&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="160" width="900" x="80" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="eb1" edge="1" parent="1" source="nunit" style="endArrow=classic;html=1;" target="dispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb2" edge="1" parent="1" source="dispatch" style="endArrow=classic;html=1;fontSize=10;fontColor=#82b366;" target="smokeC" value="[Smoke] 无 Fixture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb3" edge="1" parent="1" source="dispatch" style="endArrow=classic;html=1;fontSize=10;fontColor=#9673a6;" target="fixC" value="[FixtureRequired] 调用 EnsureAsync">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eb4" edge="1" parent="1" source="dispatch" style="endArrow=classic;html=1;fontSize=10;fontColor=#d6b656;" target="diagC" value="Preflight/Dependency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
