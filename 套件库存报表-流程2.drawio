@@ -1,0 +1,156 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="第 1 页" id="WVU-OMvCB94zMrwC8k5P">
+    <mxGraphModel dx="1833" dy="1764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" mermaidData="{&#xa;  &quot;data&quot;: &quot;flowchart LR\n  Input[\&quot;查询输入&lt;br/&gt;查询项 + 可用量方案&lt;br/&gt;用户分组 + 栏目\&quot;] --&gt; Kit[\&quot;temp_*_KitSet&lt;br/&gt;套件范围 / 权限&lt;br/&gt;停用与默认 BOM 校验\&quot;]\n  Kit --&gt; Rule[\&quot;temp_*_KitChildRule&lt;br/&gt;每个 BomChildId 一条规则&lt;br/&gt;BOM / 查询条件优先级\&quot;]\n  Rule --&gt; Stock[\&quot;temp_*_StockCandidate&lt;br/&gt;相关存货现存量一次扫描&lt;br/&gt;库存维度与权限\&quot;]\n  Stock --&gt; Match[\&quot;temp_*_MatchedChildStock&lt;br/&gt;规则批量匹配库存&lt;br/&gt;同一库存允许复制\&quot;]\n  Match --&gt; Child[\&quot;temp_*_ChildQuantitySummary&lt;br/&gt;现存量 / 可用量汇总&lt;br/&gt;无库存显示空、计算按 0\&quot;]\n  Child --&gt; KitSum[\&quot;temp_*_KitQuantitySummary&lt;br/&gt;最小成套数&lt;br/&gt;限制子件 / 已订未执行量\&quot;]\n  KitSum --&gt; Report[\&quot;ReportTable 实体主表&lt;br/&gt;TEMP_0_EAP_Rpt_...&lt;br/&gt;完整父路径键 + 隐藏标识\&quot;]\n  Report --&gt; Compile[\&quot;运行时分组编译&lt;br/&gt;分类 → KitNodeKey → ChildNodeKey&lt;br/&gt;→ 一个 StockLeafKey 组合层\&quot;]\n  Compile --&gt; Engine[\&quot;平台统计表引擎&lt;br/&gt;GroupOutputValue 按层级取值&lt;br/&gt;分页前隐藏空库存叶子\&quot;]\n  Engine --&gt; Result[\&quot;最终树形结果&lt;br/&gt;套件 → 子件 → 库存组合&lt;br/&gt;页面 / 打印 / 导出一致\&quot;]\n  Note[\&quot;中间实体表在主表形成后删除&lt;br/&gt;主表和派生表由平台按 TaskSessionID 清理\&quot;] -.-&gt; Report&quot;,&#xa;  &quot;config&quot;: null&#xa;}" id="25">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="查询输入&#xa;查询项 + 可用量方案&#xa;用户分组 + 栏目" mermaidId="n:Input" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="查询输入&#xa;查询项 + 可用量方案&#xa;用户分组 + 栏目" id="2">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="206" x="8" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_KitSet&#xa;套件范围 / 权限&#xa;停用与默认 BOM 校验" mermaidId="n:Kit" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_KitSet&#xa;套件范围 / 权限&#xa;停用与默认 BOM 校验" id="3">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="213" x="264" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_KitChildRule&#xa;每个 BomChildId 一条规则&#xa;BOM / 查询条件优先级" mermaidId="n:Rule" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_KitChildRule&#xa;每个 BomChildId 一条规则&#xa;BOM / 查询条件优先级" id="4">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="246" x="527" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_StockCandidate&#xa;相关存货现存量一次扫描&#xa;库存维度与权限" mermaidId="n:Stock" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_StockCandidate&#xa;相关存货现存量一次扫描&#xa;库存维度与权限" id="5">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="236" x="823" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_MatchedChildStock&#xa;规则批量匹配库存&#xa;同一库存允许复制" mermaidId="n:Match" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_MatchedChildStock&#xa;规则批量匹配库存&#xa;同一库存允许复制" id="6">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="255" x="1109" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_ChildQuantitySummary&#xa;现存量 / 可用量汇总&#xa;无库存显示空、计算按 0" mermaidId="n:Child" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_ChildQuantitySummary&#xa;现存量 / 可用量汇总&#xa;无库存显示空、计算按 0" id="7">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="284" x="1414" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="temp_*_KitQuantitySummary&#xa;最小成套数&#xa;限制子件 / 已订未执行量" mermaidId="n:KitSum" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="temp_*_KitQuantitySummary&#xa;最小成套数&#xa;限制子件 / 已订未执行量" id="8">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="267" x="1793" y="8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="ReportTable 实体主表&#xa;TEMP_0_EAP_Rpt_...&#xa;完整父路径键 + 隐藏标识" mermaidId="n:Report" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="ReportTable 实体主表&#xa;TEMP_0_EAP_Rpt_...&#xa;完整父路径键 + 隐藏标识" id="9">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="238" x="2155" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="运行时分组编译&#xa;分类 → KitNodeKey → ChildNodeKey&#xa;→ 一个 StockLeafKey 组合层" mermaidId="n:Compile" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="运行时分组编译&#xa;分类 → KitNodeKey → ChildNodeKey&#xa;→ 一个 StockLeafKey 组合层" id="10">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="323" x="2443" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="平台统计表引擎&#xa;GroupOutputValue 按层级取值&#xa;分页前隐藏空库存叶子" mermaidId="n:Engine" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="平台统计表引擎&#xa;GroupOutputValue 按层级取值&#xa;分页前隐藏空库存叶子" id="11">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="277" x="2816" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="最终树形结果&#xa;套件 → 子件 → 库存组合&#xa;页面 / 打印 / 导出一致" mermaidId="n:Result" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="最终树形结果&#xa;套件 → 子件 → 库存组合&#xa;页面 / 打印 / 导出一致" id="12">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="93" width="239" x="3143" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="中间实体表在主表形成后删除&#xa;主表和派生表由平台按 TaskSessionID 清理" mermaidId="n:Note" mermaidBaseStyle="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="中间实体表在主表形成后删除&#xa;主表和派生表由平台按 TaskSessionID 清理" id="13">
+          <mxCell parent="25" style="html=1;whiteSpace=wrap;strokeWidth=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" vertex="1">
+            <mxGeometry height="73" width="357" x="1748" y="151" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Input-&gt;Kit#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="14">
+          <mxCell edge="1" parent="25" source="2" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="3">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Kit-&gt;Rule#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="15">
+          <mxCell edge="1" parent="25" source="3" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="4">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Rule-&gt;Stock#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="16">
+          <mxCell edge="1" parent="25" source="4" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="5">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Stock-&gt;Match#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="17">
+          <mxCell edge="1" parent="25" source="5" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="6">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Match-&gt;Child#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="18">
+          <mxCell edge="1" parent="25" source="6" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="7">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Child-&gt;KitSum#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" mermaidBaseValue="" id="19">
+          <mxCell edge="1" parent="25" source="7" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0;entryY=0.51;" target="8">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:KitSum-&gt;Report#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0.08;entryY=0;" mermaidBaseValue="" id="20">
+          <mxCell edge="1" parent="25" source="8" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0.08;entryY=0;" target="9">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="2130" y="55" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Report-&gt;Compile#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" mermaidBaseValue="" id="21">
+          <mxCell edge="1" parent="25" source="9" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" target="10">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Compile-&gt;Engine#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" mermaidBaseValue="" id="22">
+          <mxCell edge="1" parent="25" source="10" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" target="11">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Engine-&gt;Result#0" mermaidBaseStyle="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" mermaidBaseValue="" id="23">
+          <mxCell edge="1" parent="25" source="11" style="curved=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.49;entryX=0;entryY=0.49;" target="12">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:Note-&gt;Report#0" mermaidBaseStyle="curved=1;dashed=1;dashPattern=2 3;fixDash=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0.08;entryY=1;" mermaidBaseValue="" id="24">
+          <mxCell edge="1" parent="25" source="13" style="curved=1;dashed=1;dashPattern=2 3;fixDash=1;startArrow=none;endArrow=block;endSize=7;strokeColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.51;entryX=0.08;entryY=1;" target="9">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="2130" y="188" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
